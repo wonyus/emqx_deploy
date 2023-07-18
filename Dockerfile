@@ -1,10 +1,19 @@
-# Use the base image
-FROM ghcr.io/emqx/emqx-builder/5.0-17:1.13.4-24.2.1-1-ubuntu20.04
+# Use the base image with the desired version of Ubuntu
+FROM ubuntu:20.04
+
+# Install necessary dependencies
+RUN apt-get update && \
+    apt-get install -y git make && \
+    rm -rf /var/lib/apt/lists/*
+
+# Clone the EMQX repository
+RUN git clone https://github.com/emqx/emqx.git
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /emqx
 
-# Copy your application files to the container
-COPY . /app
+# Build EMQX
+RUN make
 
-RUN ls -la
+# Start EMQX console
+CMD ["/emqx/_build/emqx/rel/emqx/bin/emqx", "console"]
