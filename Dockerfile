@@ -11,4 +11,4 @@ ENV EMQX_CLUSTER__STATIC__SEEDS="[emqx@node1.emqx.io]"
 # CMD ["emqx", "-p", "18083", "foreground"]
 
 # CMD ["/opt/emqx/bin/emqx", "start", "-p", "18083"]
-CMD ["/opt/emqx/bin/emqx", "start", "-p","1883", "-p","8083", "-p","8084", "-p","8883", "-p", "18083"]
+CMD ["/opt/emqx/bin/emqx", "start"]
