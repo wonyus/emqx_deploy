@@ -7,5 +7,7 @@ RUN apt-get -y update && apt-get install -y wget
 RUN wget https://www.emqx.com/en/downloads/broker/5.1.1/emqx-5.1.1-ubuntu22.04-amd64.deb && \
     apt install -y ./emqx-5.1.1-ubuntu22.04-amd64.deb
 
+EXPOSE 1883 8083 8084 8883 18083
+
 # Start EMQX broker
 CMD emqx start
