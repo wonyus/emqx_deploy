@@ -7,9 +7,15 @@ RUN apt-get -y update && apt-get install -y wget
 RUN wget https://www.emqx.com/en/downloads/broker/5.1.1/emqx-5.1.1-ubuntu22.04-amd64.deb && \
     apt install -y ./emqx-5.1.1-ubuntu22.04-amd64.deb
 
+ARG A
+ARG B
+ARG C
+ARG D
+ARG E
 
-EXPOSE 1883:1883/tcp
-EXPOSE 8083:8083/tcp
-EXPOSE 8084:8084/tcp
-EXPOSE 8883:8883/tcp
-EXPOSE 18083:80/tcp
+
+EXPOSE $A/tcp
+EXPOSE $B/tcp
+EXPOSE $C/tcp
+EXPOSE $D/tcp
+EXPOSE $E/tcp
