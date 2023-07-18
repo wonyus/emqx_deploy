@@ -1,14 +1,14 @@
-FROM emqx:5.1.1
+FROM ubuntu:22.04
 
-ENV EMQX_NODE_NAME=emqx@node1.emqx.io
-ENV EMQX_CLUSTER__DISCOVERY_STRATEGY=static
-ENV EMQX_CLUSTER__STATIC__SEEDS="[emqx@node1.emqx.io]"
+# Install required dependencies
+RUN apt-get update && \
+    apt-get install -y wget && \
+    rm -rf /var/lib/apt/lists/*
 
-# EXPOSE 1883 8083 8084 8883 18083
+# Download and install EMQX broker
+RUN wget https://www.emqx.com/en/downloads/broker/5.1.1/emqx-5.1.1-ubuntu22.04-amd64.deb && \
+    apt install -y ./emqx-5.1.1-ubuntu22.04-amd64.deb && \
+    rm emqx-5.1.1-ubuntu22.04-amd64.deb
 
-
-# CMD ["emqx", "foreground"]
-# CMD ["emqx", "-p", "18083", "foreground"]
-
-# CMD ["/opt/emqx/bin/emqx", "start", "-p", "18083"]
-CMD ["/opt/emqx/bin/emqx", "start"]
+# Start EMQX broker
+CMD ["systemctl", "start", "emqx"]
