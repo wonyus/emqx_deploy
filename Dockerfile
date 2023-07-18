@@ -1,8 +1,7 @@
 FROM ubuntu:22.04
 
 # Install required dependencies
-RUN sudo apt-get update && \
-    sudo apt-get install -y wget 
+RUN sudo apt-get update && 
 
 # Download and install EMQX broker
 RUN cd
