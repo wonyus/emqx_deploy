@@ -6,3 +6,5 @@ WORKDIR /app
 
 # Copy your application files to the container
 COPY . /app
+
+RUN ls -la
