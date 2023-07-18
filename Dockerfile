@@ -8,4 +8,4 @@ RUN wget https://www.emqx.com/en/downloads/broker/5.1.1/emqx-5.1.1-ubuntu22.04-a
     apt install -y ./emqx-5.1.1-ubuntu22.04-amd64.deb
 
 # Start EMQX broker
-CMD ["sudo", "systemctl", "start", "emqx"]
+CMD systemctl start emqx
